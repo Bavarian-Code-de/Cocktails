@@ -16,7 +16,7 @@
     </header>
 
     <div class="container">
-        <div class="card" onclick="this.classList.toggle('flipped')">
+        <div class="card">
             <div class="card-inner">
                 <div class="card-front">
                     <img src="images/planters-punch.jpg" alt="Cocktail 1">
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="card" onclick="this.classList.toggle('flipped')">
+        <div class="card">
             <div class="card-inner">
                 <div class="card-front">
                     <img src="images/gin-tonic.webp" alt="Cocktail 2">
@@ -50,7 +50,7 @@
             </div>
         </div>
 
-        <div class="card" onclick="this.classList.toggle('flipped')">
+        <div class="card">
             <div class="card-inner">
                 <div class="card-front">
                     <img src="images/jack-frost.png" alt="Cocktail 3">
@@ -67,7 +67,8 @@
                 </div>
             </div>
         </div>
-        <div class="card" onclick="this.classList.toggle('flipped')">
+        
+        <div class="card">
             <div class="card-inner">
                 <div class="card-front">
                     <img src="images/Whisky-Sour.webp" alt="Cocktail 6">
@@ -84,7 +85,8 @@
                 </div>
             </div>
         </div>
-        <div class="card" onclick="this.classList.toggle('flipped')">
+        
+        <div class="card">
             <div class="card-inner">
                 <div class="card-front">
                     <img src="images/sex-on-the-beach.webp" alt="Cocktail 4">
@@ -101,7 +103,8 @@
                 </div>
             </div>
         </div>
-        <div class="card" onclick="this.classList.toggle('flipped')">
+        
+        <div class="card">
             <div class="card-inner">
                 <div class="card-front">
                     <img src="images/sex-on-the-beach.webp" alt="Cocktail 5">
@@ -119,8 +122,43 @@
                 </div>
             </div>
         </div>
-
-        
     </div>
+
+    <!-- JavaScript zur Kartensteuerung -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".card");
+        let lastFlippedCard = null;
+
+        cards.forEach(card => {
+            card.addEventListener("click", () => {
+                // Drehe die aktuell angeklickte Karte
+                if (!card.classList.contains("flipped")) {
+                    // Wenn eine andere Karte geflippt ist, drehe diese zurück
+                    if (lastFlippedCard && lastFlippedCard !== card) {
+                        lastFlippedCard.classList.remove("flipped");
+                    }
+
+                    // Füge die Klasse "flipped" zur aktuellen Karte hinzu
+                    card.classList.add("flipped");
+                    lastFlippedCard = card;
+                    
+                    // Timer für das automatische Zurückdrehen nach 20 Sekunden
+                    setTimeout(() => {
+                        card.classList.remove("flipped");
+                        // Wenn diese Karte die letzte geflippte Karte war, setzen wir sie auf null
+                        if (lastFlippedCard === card) {
+                            lastFlippedCard = null;
+                        }
+                    }, 20000);
+                } else {
+                    // Wenn die Karte bereits geflippt ist, drehe sie zurück
+                    card.classList.remove("flipped");
+                    lastFlippedCard = null;
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>
