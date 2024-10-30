@@ -1,0 +1,17 @@
+name: Update Files via Webhook
+
+on:
+  push:
+    branches:
+      - main  # Oder ein anderer Branch, auf den du diese Action anwenden möchtest
+
+jobs:
+  update-via-webhook:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Send webhook to update files
+      run: |
+        curl -X POST ${{ secrets.WEBHOOK_URL }} \
+        -H "Content-Type: application/json" \
+        -d '{"message": "Files have been updated on push event."}'
