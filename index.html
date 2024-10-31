@@ -6,11 +6,27 @@
     <title>Cocktailauswahl</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional CSS for the language button */
+        .language-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Überschrift hinzugefügt -->
+    <!-- Header with language selection button -->
     <header>
+        <button class="language-button" onclick="toggleLanguage()">EN / DE</button>
         <h1 class="fancy-heading">Uschis & Andis Tresenoase</h1>
         <h4 style="color: white;">Für Infos zu den Zutaten einfach auf das Bild klicken</h4>
     </header>
@@ -159,6 +175,11 @@
             });
         });
     });
+    
+    function toggleLanguage() {
+        window.location.href = "index_en.html";
+        // Future: Implement actual language switching functionality
+    }
     </script>
 </body>
 </html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail Selection</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional CSS for the language button */
+        .language-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with language selection button -->
+    <header>
+        <button class="language-button" onclick="toggleLanguage()">EN / DE</button>
+        <h1 class="fancy-heading">Uschi's & Andi's Counter Oasis</h1>
+        <h4 style="color: white;">Simply click on the image for information about the ingredients</h4>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/planters-punch.jpg" alt="Cocktail 1">
+                    <h2>Planter</h2>
+                </div>
+                <div class="card-back">
+                    <h3>Ingredients</h3>
+                    <ul>
+                        <li>Rum</li>
+                        <li>Grenadine</li>
+                        <li>Orange Juice</li>
+                        <li>Pineapple Juice</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/gin-tonic.webp" alt="Cocktail 2">
+                    <h2>Gin Tonic</h2>
+                </div>
+                <div class="card-back">
+                    <h3>Ingredients</h3>
+                    <ul>
+                        <li>Gin</li>
+                        <li>Tonic Water</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/jack-frost.png" alt="Cocktail 3">
+                    <h2>Jack Frost</h2>
+                </div>
+                <div class="card-back">
+                    <h3>Ingredients</h3>
+                    <ul>
+                        <li>Blue Curacao</li>
+                        <li>Tequila</li>
+                        <li>Limes</li>
+                        <li>Coconut Syrup</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/Whisky-Sour.webp" alt="Cocktail 6">
+                    <h2>Whiskey Sour</h2>
+                </div>
+                <div class="card-back">
+                    <h3>Ingredients</h3>
+                    <ul>
+                        <li>Whiskey</li>
+                        <li>Lemon</li>
+                        <li>Egg White</li>
+                        <li>Sugar Syrup</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/sex-on-the-beach.webp" alt="Cocktail 4">
+                    <h2>Sex on the Beach</h2>
+                </div>
+                <div class="card-back">
+                    <h3>Ingredients</h3>
+                    <ul>
+                        <li>Vodka</li>
+                        <li>Peach Liqueur</li>
+                        <li>Cranberry Juice</li>
+                        <li>Orange Juice</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="images/sex-on-the-beach.webp" alt="Cocktail 5">
+                    <h2>Sex on the Beach Non-Alcoholic</h2>
+                </div>
+                <div class="card-back">
+                    <h3>Ingredients</h3>
+                    <ul>
+                        <li>Lemon</li>
+                        <li>Peach Juice</li>
+                        <li>Cranberry Juice</li>
+                        <li>Orange Juice</li>
+                        <li>Pineapple Juice</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for card control -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".card");
+        let lastFlippedCard = null;
+
+        cards.forEach(card => {
+            card.addEventListener("click", () => {
+                // Flip the currently clicked card
+                if (!card.classList.contains("flipped")) {
+                    // If another card is flipped, flip it back
+                    if (lastFlippedCard && lastFlippedCard !== card) {
+                        lastFlippedCard.classList.remove("flipped");
+                    }
+
+                    // Add "flipped" class to the current card
+                    card.classList.add("flipped");
+                    lastFlippedCard = card;
+                    
+                    // Timer to automatically flip back after 20 seconds
+                    setTimeout(() => {
+                        card.classList.remove("flipped");
+                        // If this card was the last flipped card, set it to null
+                        if (lastFlippedCard === card) {
+                            lastFlippedCard = null;
+                        }
+                    }, 20000);
+                } else {
+                    // If the card is already flipped, flip it back
+                    card.classList.remove("flipped");
+                    lastFlippedCard = null;
+                }
+            });
+        });
+    });
+    function toggleLanguage() {
+        window.location.href = "index.html";
+        // Future: Implement actual language switching functionality
+    }
+    </script>
+</body>
+</html>
